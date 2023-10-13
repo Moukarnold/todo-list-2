@@ -1,0 +1,22 @@
+<%- include("partials/header.ejs") %>
+
+<h3 class="welcome"> Here are all your stuffs</h3>
+
+    <ul>
+        <% tasks.forEach((task)=>{ %>
+        <li class="activities theDate"> 
+            <input type="checkbox" id="<%= task.id %>" name="taskCheckbox" class="task-checkbox" <% if (task.completed) { %>checked<% } %>>
+            <label for="<%= task.id %>" class="<% if (task.completed) { %>completed<% } %>">
+          <%= task.task %> should be done on <%= task.date %> at <%= task.time %>
+        </li>
+
+        <%}); %>
+    </ul>
+ 
+        
+
+
+</body>
+
+  
+</html>

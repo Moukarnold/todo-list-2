@@ -1,0 +1,62 @@
+
+<%- include("partials/header.ejs") %>
+
+   <div class="welcome">
+    <h2> Welcome to your Task planner</h2>
+  </div>
+  <div class="welcome">
+     <h3> schedule all your stuff  </h3>
+  </div>
+
+    <div class="taskSetting"> 
+
+      <form method="POST" action="/">
+        <div class="taskParts">
+          <label for="theDate">Date :</label>
+          <input type="date" id="theDate" name="date">
+        </div>
+        
+        <div class="taskParts">
+                    <label for="theTime">Time :</label>
+          <input type="time" id="theTime" name="time">
+        </div>
+      
+        <div class="taskParts">
+          <label for="theTask">Write a task:</label>
+          <input type="text" id="theTask" name="task" placeholder="Write a task">
+        </div>
+        <input type="submit" value="Submit">
+
+     </form>
+  </div>
+  <div>
+   <% if (tasks && tasks.length > 0) { %>
+    <% const groupedTasks = {}; %>
+    <% tasks.forEach(task => { %>
+        <% if (!groupedTasks[task.date]) { %>
+            <% groupedTasks[task.date] = []; %>
+        <%  } %>
+        <% groupedTasks[task.date].push(task); %>
+    <% }); %>
+    <% for (const date in groupedTasks) { %>
+        <div class="tasks" > 
+          <div class="theDate"> <%= date %></div>
+         <div >
+            <ul >
+                <% groupedTasks[date].forEach(task => { %>
+                    <li class="activities" ><%= task.task %> at <%= task.time %> </li>
+                <% }); %>
+            </ul>
+            <a href="/workList?date=<%= date %>"><button> more...</button></a>
+         </div>
+       </div>
+    <% } %>
+   <% } %>
+  
+</div>
+  
+
+</body>
+
+  
+</html>

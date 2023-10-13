@@ -1,0 +1,120 @@
+
+body{
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+  }
+  
+
+  header {
+    background-color: antiquewhite;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 10px 20px;
+    
+  }
+  
+  
+  .welcome {
+    text-align: center;
+  }
+  
+  .welcome h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .welcome h3 {
+    font-size: 20px;
+    color: #333;
+  }
+  
+  
+  .taskSetting {
+    width: 40%;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 20px;
+    margin-top: 20px;
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .taskParts {
+    margin: 10px 0;
+  }
+  
+ 
+  .submit-button {
+    background-color: #007BFF;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .submit-button:hover {
+    background-color: #0056b3;
+  }
+  
+   .tasks{
+   width: 20%;
+   height: 20%;
+   background-color: rgb(248, 239, 220);
+   border: solid 1px black;
+   margin: 10px;
+   margin-left: 20px;
+
+  } 
+   .theDate{
+    background-color: #fff;
+    text-align: center;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-size: 1.3rem;
+
+   }
+  .activities{
+    text-align: center;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 1.2rem;
+   
+
+  }
+
+  ul{
+    list-style-type: none;
+    padding: 0;
+  }
+
+  a{
+     margin: 10px;
+
+  }
+
+  .completed {
+    text-decoration: line-through;
+  }
+
+
+
+.activities-list ul li {
+  font-family:'Times New Roman', Times, serif;
+  font-size: 1.2rem;
+  display: inline; 
+  margin-right: 10px;
+  text-align: center;
+
+}
+
+.worklist{
+ display: flex;
+ justify-content: center;
+ text-align: center;
+ background-color: #fff;
+ text-align: center;
+}

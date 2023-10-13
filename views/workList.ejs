@@ -1,0 +1,42 @@
+
+<%- include("partials/header.ejs") %>
+
+
+    <h1 class="welcome">Tasks for <%= date %></h1>
+    <div class="worklist">
+    <div class=" activities-list">
+     <ul >
+        <% tasks.forEach(task => { %>
+         <div >
+            <label for="<%= task.id %>" class="<% if (task.completed) { %>completed<% } %>">
+           <input type="checkbox" id="<%= task.id %>" name="taskCheckbox" class="task-checkbox" <% if (task.completed) { %>checked<% } %>>
+            <li ><%= task.task %> at <%= task.time %></li>
+        </div>
+        <% }); %>
+    </ul>
+</div>
+</div>
+
+    <h2 class="welcome">add new tasks :</h2>
+
+    <form method="POST" action="/workList">
+        <div class="taskSetting" >
+            <div class="taskParts">
+                <label for="theDate">Date :</label>
+                <input type="hidden" value="<%=date%>" name="date">
+            </div>
+            
+            <div class="taskParts">
+            <label for="theTime">Time :</label>
+            <input type="time" id="theTime" name="time">
+            </div>
+        
+          <div class="taskParts">
+            <label for="theTask">Write a task:</label>
+            <input type="text" id="theTask" name="task" placeholder="Write a task">
+          </div>
+          <input type="submit" value="add Task" >
+    </form>
+
+</body>
+</html>
