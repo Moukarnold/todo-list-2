@@ -69,6 +69,27 @@ try{
 res.redirect("/");
 })
 
+app.get("/workList", async (req, res)=>{
+   
+ const requestedDate = req.query.date;
+
+ try {
+   const requestedTask = await ListModel.find( {date: requestedDate});
+   res.render("workList", {tasks: requestedTask, date: requestedDate});
+ } catch(error) {
+ console.log("can not display the tasks of choosen date ", error);
+  }
+  });
+
+ 
+
+// app.post("/workList/:id", async (req, res)=>{
+
+//     const date = req.
+
+// })
+
+
 
 
  createDocument()
