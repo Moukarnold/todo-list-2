@@ -35,8 +35,8 @@ const createDocument = async ()=>{
 app.get("/", async (req, res)=>{
 
   try{
-    const availableTaskDatas = await ListModel.find();
-    res.render("toDo",{tasks: availableTaskDatas});
+    const taskDatas = await ListModel.find();
+    res.render("toDo",{tasks: taskDatas});
   } catch (error){
     console.error(" tasks can´t not be laoded from Mongodb",error);
   }
@@ -53,13 +53,13 @@ app.post("/", async (req, res)=>{
      
        if ( newTask && newTime && newDate){
 try{ 
-        const TaskData = {
+        const newTaskData = {
              task: newTask,
              time: newTime,
              date: newDate,       
              };
     
-     const savedTask = await ListModel.create(TaskData);
+     const savedTask = await ListModel.create(newTaskData);
      console.log("tasks added to Mongodb",savedTask );
 
 }catch (error){
@@ -69,15 +69,13 @@ try{
 res.redirect("/");
 })
 
-
-//display the tasks from the choosen date from the datas store on tne mongodb
 app.get("/workList", async (req, res)=>{
    
  const requestedDate = req.query.date;
 
  try {
-   const requestedTasks = await ListModel.find( {date: requestedDate});
-   res.render("workList", {tasks: requestedTasks, date: requestedDate});
+   const requestedTask = await ListModel.find( {date: requestedDate});
+   res.render("workList", {tasks: requestedTask, date: requestedDate});
  } catch(error) {
  console.log("can not display the tasks of choosen date ", error);
   }
@@ -85,26 +83,11 @@ app.get("/workList", async (req, res)=>{
 
  
 
- app.post("/workList", async (req, res)=>{
-   const date = req.query.date;
-    const  newTime= req.body.time;
-    const newTask= req.body.task;
-    if ( newTime && newTask){
-      try {
-        const taskData = {
-          task: newTask,
-          time: newTime,
-          date: date,
-        };
-        const savedTask = await ListModel.create(taskData);
-            console.log(" the updated task is :", savedTask );
-      } catch (error){
-        console.error("error during the update of the task", error);
-      }
-      res.redirect(`/workList?date=${date}`);
-    }
-  })
+// app.post("/workList/:id", async (req, res)=>{
 
+//     const date = req.
+
+// })
 
 
 
