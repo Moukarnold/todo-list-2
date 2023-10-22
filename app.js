@@ -9,9 +9,6 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 
-
-
-
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static("public"));
@@ -84,7 +81,7 @@ app.get("/workList", async (req, res)=>{
   });
 
  
-
+// add new tasks on choosen date in the database ans display it
  app.post("/workList", async (req, res)=>{
    const date = req.query.date;
     const  newTime= req.body.time;
@@ -105,7 +102,18 @@ app.get("/workList", async (req, res)=>{
     }
   })
 
+ app.get("/todos-list", async (req, res)=>{
+    
+  try{
+    const todoList = await ListModel.find();
+    res.render("todoList", { tasks: todoList})
 
+  }catch (error){
+    console.error("todos can´t display :", error)
+  }
+
+
+ })
 
 
 
@@ -114,5 +122,3 @@ app.get("/workList", async (req, res)=>{
 app.listen( port, ()=>{
     console.log(" server on port", port);
 });
-
-
